@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vault — Espacio Personal</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/vault.css">
+</head>
+
+<body>
+
+    <div class="app">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">⚡ VAULT <span>HUB</span></div>
+            </div>
+
+            <input type="text" id="searchGroups" class="search" placeholder="Filtrar categorías..." style="height: 34px; font-size: 12px; margin-bottom: 8px;">
+
+            <div class="section-label">Categorías</div>
+            <div id="groups" class="groups"></div>
+
+            <div style="margin-top: 12px;">
+                <button id="newGroupButton" class="button" style="width: 100%;">+ Nueva Categoría</button>
+            </div>
+
+            <!-- Decoración / Tip informativo -->
+            <div class="tip-box" style="margin-top: 18px;">
+                <div class="tip-title">💡 Tip Rápido</div>
+                <div class="tip-content">Arrastra archivos GIF o imágenes directamente sobre la ventana para guardarlos al instante.</div>
+            </div>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <input type="text" id="search" class="search" placeholder="🔍 Buscar frases, memes, gifs o palabras clave...">
+                <button id="newItemButton" class="button primary">⚡ Crear Elemento</button>
+            </header>
+
+            <div class="content">
+                <div class="header">
+                    <h1 id="title" class="title">Vault</h1>
+                    <span id="count" class="count">0 elementos</span>
+                </div>
+                <div id="grid" class="grid"></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Grupo -->
+    <div id="groupModal" class="modal">
+        <div class="modal-box">
+            <h3>Nueva Categoría</h3>
+            <div class="field">
+                <label>Nombre de la categoría</label>
+                <input type="text" id="groupName" class="input" placeholder="Ej: Memes, Copies, Reacciones">
+            </div>
+            <div class="field">
+                <label>Color distintivo</label>
+                <input type="color" id="groupColor" value="#765cff" style="height: 40px; width: 100%; border-radius: 8px; cursor: pointer; background: var(--bg-input); border: 1px solid var(--border-subtle);">
+            </div>
+            <div class="modal-actions">
+                <button id="cancelGroup" class="button">Cancelar</button>
+                <button id="saveGroup" class="button primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Elemento -->
+    <div id="itemModal" class="modal">
+        <div class="modal-box">
+            <h3>Nuevo Elemento</h3>
+            <div class="field">
+                <label>Título / Referencia</label>
+                <input type="text" id="itemName" class="input" placeholder="Ej: Meme del perro, Copy de bienvenida...">
+            </div>
+            <div class="field">
+                <label>Tipo de recurso</label>
+                <select id="itemType" class="input">
+                    <option value="text">Texto / Copy</option>
+                    <option value="image">Imagen / GIF</option>
+                </select>
+            </div>
+
+            <div class="field" id="textContainer">
+    <label>Contenido del Texto</label>
+    <div class="editor-wrapper">
+        <div class="editor-toolbar">
+            <button type="button" class="toolbar-btn" onclick="formatText('bold')" title="Negrita"><b>B</b></button>
+            <button type="button" class="toolbar-btn" onclick="formatText('italic')" title="Cursiva"><i>I</i></button>
+            <button type="button" class="toolbar-btn" onclick="formatText('underline')" title="Subrayado"><u>S</u></button>
+            <button type="button" class="toolbar-btn" onclick="formatText('strikeThrough')" title="Tachado"><s>T</s></button>
+            <span class="toolbar-separator"></span>
+            <select class="toolbar-select" onchange="formatSize(this.value)" title="Tamaño de fuente">
+                <option value="3">Normal</option>
+                <option value="2">Pequeño</option>
+                <option value="5">Grande</option>
+                <option value="7">Muy Grande</option>
+            </select>
+            <input type="color" class="toolbar-color" onchange="formatColor(this.value)" title="Color de texto" value="#f8fafc">
+        </div>
+        <div id="itemContent" class="editor-content" contenteditable="true" placeholder="Escribe o pega tu frase/copy aquí..."></div>
+    </div>
+</div>
+
+            <div class="field" id="imageContainer" style="display: none;">
+                <div class="input-tabs">
+                    <button type="button" id="tabFile" class="tab-btn active">📁 Archivo Local</button>
+                    <button type="button" id="tabUrl" class="tab-btn">🔗 Enlace URL</button>
+                </div>
+
+                <div id="fileMode">
+                    <div id="dropZone" class="drop-zone">
+                        <div class="drop-zone-icon">📥</div>
+                        <div class="drop-zone-text" id="dropZoneText">Arrastra un GIF o imagen aquí o haz clic</div>
+                        <input type="file" id="itemImage" accept="image/*" class="file-input">
+                    </div>
+                </div>
+
+                <div id="urlMode" style="display: none;">
+                    <input type="url" id="itemUrl" class="input" placeholder="https://media.giphy.com/media/.../giphy.gif">
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button id="cancelItem" class="button">Cancelar</button>
+                <button id="saveItem" class="button primary">Guardar Recurso</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/groups.js"></script>
+    <script src="js/vault.js"></script>
+</body>
+
+</html>

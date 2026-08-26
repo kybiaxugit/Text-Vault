@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+    --bg-app: #0b0f17;
+    --bg-sidebar: #0f1522;
+    --bg-surface: #141c2d;
+    --bg-surface-hover: #1c273e;
+    --bg-input: #090d15;
+    
+    /* Bordes bien definidos y claros */
+    --border-subtle: #243047;
+    --border-active: #3c4f73;
+    --border-bright: #5871a3;
+    --border-accent: #765cff;
+
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+
+    --accent: #765cff;
+    --accent-hover: #6346fd;
+    --accent-glow: rgba(118, 92, 255, 0.3);
+    --accent-gradient: linear-gradient(135deg, #765cff 0%, #a855f7 100%);
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+
+    --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-modal: 0 24px 48px rgba(0, 0, 0, 0.8);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-app);
+    /* Fondo con rejilla sutil de puntos de fondo */
+    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+}
+
+button, input, textarea, select {
+    font-family: inherit;
+    color: inherit;
+}
+
+/* Botones estructurados con bordes marcados */
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 38px;
+    padding: 0 16px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.button:hover {
+    background: var(--bg-surface-hover);
+    border-color: var(--border-active);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+.button.primary {
+    background: var(--accent-gradient);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    box-shadow: 0 0 14px var(--accent-glow);
+}
+
+.button.primary:hover {
+    box-shadow: 0 0 22px rgba(118, 92, 255, 0.5);
+    transform: translateY(-1px);
+}
+
+/* Insignias / Tags */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 1px solid transparent;
+}
+
+.badge-text {
+    background: rgba(118, 92, 255, 0.15);
+    color: #a5b4fc;
+    border-color: rgba(118, 92, 255, 0.3);
+}
+
+.badge-image {
+    background: rgba(14, 165, 233, 0.15);
+    color: #38bdf8;
+    border-color: rgba(14, 165, 233, 0.3);
+}
+
+.badge-pinned {
+    background: rgba(245, 158, 11, 0.15);
+    color: #fbbf24;
+    border-color: rgba(245, 158, 11, 0.3);
+}
